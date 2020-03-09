@@ -16,11 +16,8 @@
 <script src="/js/jquery-1.11.0.min.js"></script>
 <script>
         function login() {
-            alert('aaa')
-            //var username = $("input[name='username']").val();
-            //var password = $("input[name='password']").val();
-            var username = document.getElementById('username').innerText;
-            var password = document.getElementById('password').innerText;
+            var username = $('#username').val();
+            var password = $('#password').val();;
             $.ajax({
                 type: "post",
                 url:  "login",

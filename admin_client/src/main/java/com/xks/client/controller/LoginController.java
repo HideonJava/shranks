@@ -25,8 +25,8 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    @ResponseBody
-    public void login(String username, String password) {
+    //@ResponseBody
+    public String login(String username, String password) {
         // 密码MD5加密
         //password = MD5Utils.encrypt(username, password);
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
@@ -44,18 +44,19 @@ public class LoginController {
         } catch (AuthenticationException e) {
             logger.info("认证失败！");
         }
+        return "/index";
     }
 
-//    @RequestMapping("/")
-//    public String redirectIndex() {
-//        return "redirect:/login";
-//    }
+    @RequestMapping("/")
+    public String redirectIndex() {
+        return "redirect:/login";
+    }
 
     @RequestMapping("/index")
     public String index(Model model) {
         // 登录成后，即可通过Subject获取登录的用户信息
         User user = (User) SecurityUtils.getSubject().getPrincipal();
         model.addAttribute("user", user);
-        return "index";
+        return "/index";
     }
 }

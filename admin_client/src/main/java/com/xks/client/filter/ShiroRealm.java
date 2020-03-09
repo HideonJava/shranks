@@ -6,9 +6,13 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ShiroRealm extends AuthorizingRealm {
+
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserMapper userMapper;
@@ -30,8 +34,7 @@ public class ShiroRealm extends AuthorizingRealm {
         // 获取用户输入的用户名和密码
         String userName = (String) token.getPrincipal();
         String password = new String((char[]) token.getCredentials());
-
-        System.out.println("用户" + userName + "认证-----ShiroRealm.doGetAuthenticationInfo");
+        LOGGER.debug("用户" + userName + "认证-----ShiroRealm.doGetAuthenticationInfo");
 
         // 通过用户名到数据库查询用户信息
         User user = userMapper.findByUserName(userName);

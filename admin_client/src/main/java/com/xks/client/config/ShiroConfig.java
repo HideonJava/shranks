@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.LinkedHashMap;
 
-//@Configuration
+@Configuration
 public class ShiroConfig {
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
@@ -18,15 +18,16 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         // 登录的url
         shiroFilterFactoryBean.setLoginUrl("/login");
-        // 登录成功后跳转的url
-        shiroFilterFactoryBean.setSuccessUrl("/index");
+        //登录成功后跳转的url
+        //shiroFilterFactoryBean.setSuccessUrl("/index");
         // 未授权url
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 
         // 定义filterChain，静态资源不拦截
-        filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/actuator/**", "anon");
         // druid数据源监控页面不拦截
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/doc.html", "anon");
@@ -34,6 +35,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/", "anon");
         // 除上以外所有url都必须认证通过才可以访问，未通过认证自动访问LoginUrl
+        filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/**", "authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
