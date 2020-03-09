@@ -1,0 +1,6 @@
+server:
+  port: 8081
+## 指定运行环境
+#spring:
+#  profiles:
+#    active: dev

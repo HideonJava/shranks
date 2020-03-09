@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+  boot:
+    ## 注册admin中心
+    admin:
+      client:
+        url: http://localhost:8081/
+  profiles:
+    active: dev
+  ## 邮件发送地址
+#  mail:
+#    host: smtp.qq.com
+#    username: 1243931633@qq.com
+#    password: yljmwmddnrqihbag
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+#    jndi-name: mail/Session
+  ## 配置kafka
+  thymeleaf:
+    suffix: .html
+    enabled: true
+    prefix: classpath:/templates
+    cache: false
+    mode: HTML5
+    check-template-location: true
+
+  main:
+    allow:bean-definition-overriding: true
+
+    resources:
+      static-locations: classpath:/static/
+  #  kafka:
+#    bootstrap-servers: localhost:9092
+#    consumer:
+#      group-id: test-consumer
+#      auto-offset-reset: latest
+
+#logging:
+#  level: debug
+

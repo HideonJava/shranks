@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>
+        <input type="text" placeholder="用户名" id="username" required="required"/>
+        <input type="password" placeholder="密码" id="password" required="required"/>
+        <button onclick="login()">登录</button>
+    </div>
+</div>
+</body>
+<script src="/js/jquery-1.11.0.min.js"></script>
+<script>
+        function login() {
+            alert('aaa')
+            //var username = $("input[name='username']").val();
+            //var password = $("input[name='password']").val();
+            var username = document.getElementById('username').innerText;
+            var password = document.getElementById('password').innerText;
+            $.ajax({
+                type: "post",
+                url:  "login",
+                data: {"username": username,"password": password},
+                dataType: "json",
+                success: function (r) {
+                    if (r.code == 0) {
+                        location.href = ctx + 'index';
+                    } else {
+                        alert(r.msg);
+                    }
+                }
+            });
+        }
+</script>
+</html>
