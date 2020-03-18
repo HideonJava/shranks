@@ -37,7 +37,7 @@ spring:
         # 添加过滤规则
         url-pattern: /*
         # 忽略过滤的格式
-        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*,/actuator/*'
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*,/actuator/*,/swagger-ui/*'
 
       # StatViewServlet配置
       stat-view-servlet:

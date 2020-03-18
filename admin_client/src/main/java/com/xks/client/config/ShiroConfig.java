@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.LinkedHashMap;
 
-@Configuration
+//@Configuration
 public class ShiroConfig {
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {

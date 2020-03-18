@@ -41,7 +41,7 @@ public class SwaggerConfig {
     }
 
 
-    //@Bean
+    @Bean
     public Docket restfulApi() {
 
         logger.info("http://localhost:8080/swagger-ui.html");
